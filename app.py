@@ -46,8 +46,6 @@ def get_public_ip():
 
 @app.route('/dbconnect')
 def connect():
-
-
     # Specify the path to the PostgreSQL certificate file
     certificate_path = '/app/postgresql.crt'
     key_path = '/app/postgresql.key'
@@ -91,77 +89,37 @@ def connect():
     selected_proxy_ip = proxy_ips[0]
     # Set up the connection parameters
     print('proxy type 2')
-    # conn_params = {
-    #     'database': url.path[1:],
-    #     'user': url.username,
-    #     'password': url.password,
-    #     'host': url.hostname,
-    #     'port': url.port,
-    #     'sslmode': 'disable',  # Use 'require' to enable SSL
-    #     'sslcert': os.getcwd() + '/postgresql.crt',  # Path to client certificate file
-    #     'sslkey': os.getcwd() + '/postgresql.key'  # Pat
-    # }
+    conn_params = {
+        'database': url.path[1:],
+        'user': url.username,
+        'password': url.password,
+        'host': url.hostname,
+        'port': url.port,
+        'sslmode': 'require',  # Use 'require' to enable SSL
+        'sslcert': os.getcwd() + '/postgresql.crt',  # Path to client certificate file
+        'sslkey': os.getcwd() + '/postgresql.key'  # Pat
+    }
 
     print('proxy type 3')
     # Set up the proxy
-    # socks.set_default_proxy(proxy_type, addr=proxy_host)
-    # socket.socket = socks.socksocket
+    socks.set_default_proxy(proxy_type, addr=proxy_host)
+    socket.socket = socks.socksocket
     print('proxy type 4')
     # Connect to the database via proxy
-
-    # Fixie Socks credentials and server information
-    fixie_socks_host = "speedway.usefixie.com"
-    fixie_socks_port = 1080  # The port number
-    fixie_socks_user = "fixie"
-    fixie_socks_pass = "k2KJ04rPQQ047n8"
-
-    # Set up the SOCKS proxy
-    socks.set_default_proxy(socks.SOCKS5, fixie_socks_host, fixie_socks_port, False, fixie_socks_user, fixie_socks_pass)
-    socket.socket = socks.socksocket
-    print(socket.socket)
-
-    # PostgreSQL database connection parameters
-    db_params = {
-        "dbname": "d2r45oj3jf7gs7",
-        "user": "ucrol25emqd2ch",
-        "password": "p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e",
-        "host": "ec2-52-2-248-148.compute-1.amazonaws.com",
-        "port": 5432,
-        "sslcert": "/postgresql.crt",
-        "sslkey": "/postgresql.key"
-    }
-
     try:
-        # print('conn params 11: ', conn_params)
-        # connection = psycopg2.connect(**conn_params)
-        # print('conn params: ', conn_params)
-        # cursor = connection.cursor()
-        # print('proxy type 5')
-        # # Example query 
-        # query = sql.SQL('SELECT * FROM pgadmin."Prospect" limit 1;')
-        # cursor.execute(query)
-        # print('proxy type 6')
-        # # Fetch results
-        # results = cursor.fetchall()
-        # print('results:', results)
-        # return "private_working"
-
-        # response = requests.get('https://www.google.com')
-        # print(response)
-
-        conn = psycopg2.connect(**db_params)
-        print("Connected to the database successfully")
-        return 'connected'
-        # Perform database operations here
-
-        # Example: Create a cursor and execute a query
-        # cursor = conn.cursor()
-        # cursor.execute("SELECT 101;")
-        # record = cursor.fetchone()
-        # print("You are connected to - ", record, "\n")
-
-        # except psycopg2.OperationalError as e:
-        # print("Unable to connect to the database: {e}")
+        print('conn params 11: ', conn_params)
+        connection = psycopg2.connect(**conn_params)
+        print('conn params: ', conn_params)
+        cursor = connection.cursor()
+        print('proxy type 5')
+        # Example query 
+        query = sql.SQL('SELECT * FROM pgadmin."Prospect" limit 1;')
+        cursor.execute(query)
+        print('proxy type 6')
+        # Fetch results
+        results = cursor.fetchall()
+        print('results:', results)
+        return "private_working"
 
     except Exception as e:
         print(f"Error: {e}")
