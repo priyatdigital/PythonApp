@@ -80,6 +80,7 @@ def connect():
     print('proxy type 4')
     # Connect to the database via proxy
     try:
+        print('conn params 11: ', conn_params)
         connection = psycopg2.connect(**conn_params)
         print('conn params: ', conn_params)
         cursor = connection.cursor()
