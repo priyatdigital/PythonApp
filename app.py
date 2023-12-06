@@ -82,8 +82,6 @@ def connect():
     print(f"My public IP address is: {my_ip}")
     # Parse the database URL
     db_url = "postgres://ucrol25emqd2ch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-52-2-248-148.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
-
-    # db_url = "postgres://ucrol25emqd2ch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-44-205-97-79.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
     url = urlparse(db_url)
     # Set up the proxy settings
     print(proxyDict)
