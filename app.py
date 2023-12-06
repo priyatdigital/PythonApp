@@ -97,7 +97,7 @@ def connect():
         'password': url.password,
         'host': url.hostname,
         'port': url.port,
-        'sslmode': 'require',  # Use 'require' to enable SSL
+        'sslmode': 'disable',  # Use 'require' to enable SSL
         'sslcert': os.getcwd() + '/postgresql.crt',  # Path to client certificate file
         'sslkey': os.getcwd() + '/postgresql.key'  # Pat
     }
