@@ -46,6 +46,23 @@ def get_public_ip():
 
 @app.route('/dbconnect')
 def connect():
+    import os
+
+    # Specify the path to the PostgreSQL certificate file
+    certificate_path = '/app/postgresql.crt'
+
+    # Open the file and read the first line
+    try:
+        with open(certificate_path, 'r') as file:
+            first_line = file.readline().strip()
+            print(f"The first line of {certificate_path} is: {first_line}")
+    except FileNotFoundError:
+        print(f"File {certificate_path} not found.")
+    except Exception as e:
+        print(f"Error reading {certificate_path}: {e}")
+
+
+
     script_dir = os.path.dirname(os.path.realpath('postgresql.crt'))
     print('script path: ', script_dir)
     print("Current working directory:", os.getcwd())
