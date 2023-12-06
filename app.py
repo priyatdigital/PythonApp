@@ -46,6 +46,7 @@ def get_public_ip():
 
 @app.route('/dbconnect')
 def connect():
+    print("Current working directory:", os.getcwd())
     my_ip = get_public_ip()
     print(f"My public IP address is: {my_ip}")
     # Parse the database URL
@@ -69,8 +70,8 @@ def connect():
         'host': url.hostname,
         'port': url.port,
         'sslmode': 'require',  # Use 'require' to enable SSL
-        'sslcert': './postgresql.crt',  # Path to client certificate file
-        'sslkey': './postgresql.key'  # Pat
+        'sslcert': os.getcwd() + '/postgresql.crt',  # Path to client certificate file
+        'sslkey': os.getcwd() + '/postgresql.key'  # Pat
     }
 
     print('proxy type 3')
