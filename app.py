@@ -151,6 +151,7 @@ def connect():
 
         conn = psycopg2.connect(**db_params)
         print("Connected to the database successfully")
+        return 'connected'
         # Perform database operations here
 
         # Example: Create a cursor and execute a query
@@ -158,6 +159,9 @@ def connect():
         # cursor.execute("SELECT 101;")
         # record = cursor.fetchone()
         # print("You are connected to - ", record, "\n")
+
+        # except psycopg2.OperationalError as e:
+        # print("Unable to connect to the database: {e}")
 
     except Exception as e:
         print(f"Error: {e}")
