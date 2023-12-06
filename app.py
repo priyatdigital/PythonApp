@@ -104,7 +104,8 @@ def connect():
         'port': url.port,
         'sslmode': 'require',  # Use 'require' to enable SSL
         'sslcert': os.getcwd() + '/postgresql.crt',  # Path to client certificate file
-        'sslkey': os.getcwd() + '/postgresql.key'  # Pat
+        'sslkey': os.getcwd() + '/postgresql.key',
+        'sslrootcert': os.getcwd() + '/root.crt'  # Pat
     }
 
     print('proxy type 3')
