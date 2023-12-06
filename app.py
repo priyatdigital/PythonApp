@@ -10,13 +10,18 @@ import socket
 
 app = Flask(__name__)
 
+# proxyDict = {
+#               "http"  : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294',
+#               "https" : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294'
+#  }
+
 proxyDict = {
-              "http"  : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294',
-              "https" : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294'
+              "http"  : 'http://fixie:YpcpuxmrFDMenhX@velodrome.usefixie.com:80',
+              "https" : 'https://fixie:YpcpuxmrFDMenhX@velodrome.usefixie.com:80'
  }
 
  # Extract proxy connection details from env variable
-proxy = urlparse('https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294')
+# proxy = urlparse('https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294')
 
 @app.route('/')
 def hello():
@@ -81,8 +86,8 @@ def connect():
     # Set up the proxy settings
     print(proxyDict)
     proxy_host = proxyDict['http']
-    # proxy_ips = ['54.173.229.200', '54.175.230.252']
-    proxy_ips = ['54.160.232.145', '44.215.229.88']
+    proxy_ips = ['54.173.229.200', '54.175.230.252']
+    # proxy_ips = ['54.160.232.145', '44.215.229.88']
     proxy_port = 1080
     proxy_type = socks.SOCKS5  # Change this based on your proxy type
     print('proxy type')
