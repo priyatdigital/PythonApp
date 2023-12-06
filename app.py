@@ -47,7 +47,7 @@ def get_public_ip():
 @app.route('/dbconnect')
 def connect():
     script_dir = os.path.dirname(os.path.realpath('postgresql.crt'))
-    console.log('script path: ', script_dir)
+    print('script path: ', script_dir)
     print("Current working directory:", os.getcwd())
     my_ip = get_public_ip()
     print(f"My public IP address is: {my_ip}")
