@@ -69,7 +69,7 @@ def connect():
         'host': url.hostname,
         'port': url.port,
         'sslmode': 'require',  # Use 'require' to enable SSL
-        'sslcert': '/postgresql.crt',  # Path to client certificate file
+        'sslcert': '/sql.crt',  # Path to client certificate file
         'sslkey': '/postgresql.key'  # Pat
     }
 
