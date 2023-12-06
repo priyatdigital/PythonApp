@@ -58,9 +58,10 @@ def connect():
     proxy_ips = ['54.160.232.145', '44.215.229.88']
     proxy_port = 1080
     proxy_type = socks.SOCKS5  # Change this based on your proxy type
-
+    print('proxy type')
     selected_proxy_ip = proxy_ips[0]
     # Set up the connection parameters
+    print('proxy type 2')
     conn_params = {
         'database': url.path[1:],
         'user': url.username,
@@ -72,19 +73,21 @@ def connect():
         'sslkey': '/postgresql.key'  # Pat
     }
 
+    print('proxy type 3')
     # Set up the proxy
     socks.set_default_proxy(proxy_type, addr=proxy_host)
     socket.socket = socks.socksocket
-
+    print('proxy type 4')
     # Connect to the database via proxy
     try:
         connection = psycopg2.connect(**conn_params)
+        print('conn params: ', conn_params)
         cursor = connection.cursor()
-
-        # Example query
+        print('proxy type 5')
+        # Example query 
         query = sql.SQL('SELECT * FROM pgadmin."Prospect" limit 1;')
         cursor.execute(query)
-
+        print('proxy type 6')
         # Fetch results
         results = cursor.fetchall()
         print('results:', results)
