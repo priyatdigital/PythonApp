@@ -109,7 +109,7 @@ def connect():
     # Set up the proxy
     socks.set_default_proxy(proxy_type, addr=proxy_host)
     socket.socket = socks.socksocket
-    print('proxy type 4')
+    print('socket: ', socket.socket)
     # Connect to the database via proxy
     try:
         print('conn params 11: ', conn_params)
