@@ -50,7 +50,7 @@ def connect():
 
     # Specify the path to the PostgreSQL certificate file
     certificate_path = '/app/postgresql.crt'
-
+    key_path = '/app/postgresql.key'
     # Open the file and read the first line
     try:
         with open(certificate_path, 'r') as file:
@@ -60,6 +60,15 @@ def connect():
         print(f"File {certificate_path} not found.")
     except Exception as e:
         print(f"Error reading {certificate_path}: {e}")
+
+    try:
+        with open(key_path, 'r') as file:
+            first_line = file.readline().strip()
+            print(f"The first line of {key_path} is: {first_line}")
+    except FileNotFoundError:
+        print(f"File {key_path} not found.")
+    except Exception as e:
+        print(f"Error reading {key_path}: {e}")
 
 
 
