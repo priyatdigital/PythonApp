@@ -84,7 +84,7 @@ def connect():
     db_url = "postgres://ucrol25emqd2ch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-52-2-248-148.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
     url = urlparse(db_url)
     # Set up the proxy settings
-    print(proxyDict)
+    # print(proxyDict)
     # proxy_host = proxyDict['http']
     # proxy_ips = ['54.173.229.200', '54.175.230.252']
 
