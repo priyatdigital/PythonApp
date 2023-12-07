@@ -15,10 +15,10 @@ app = Flask(__name__)
 #               "https" : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294'
 #  }
 
-# proxyDict = {
-#               "http"  : 'http://fixie:YpcpuxmrFDMenhX@velodrome.usefixie.com:80',
-#               "https" : 'http://fixie:YpcpuxmrFDMenhX@velodrome.usefixie.com:80'
-#  }
+proxyDict = {
+              "http"  : 'http://fixie:YpcpuxmrFDMenhX@velodrome.usefixie.com:80',
+              "https" : 'http://fixie:YpcpuxmrFDMenhX@velodrome.usefixie.com:80'
+ }
 
  # Extract proxy connection details from env variable
 # proxy = urlparse('https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294')
@@ -81,19 +81,19 @@ def connect():
     my_ip = get_public_ip()
     print(f"My public IP address is: {my_ip}")
     # Parse the database URL
-    # db_url = "postgres://ucrol25emqd2ch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-52-2-248-148.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
-    db_url = "postgres://ucrol25emch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-52-2-248-148.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
+    db_url = "postgres://ucrol25emqd2ch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-52-2-248-148.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
+    # db_url = "postgres://ucrol25emch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-52-2-248-148.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
     url = urlparse(db_url)
     # Set up the proxy settings
     # print(proxyDict)
-    # proxy_host = proxyDict['http']
-    # proxy_ips = ['54.173.229.200', '54.175.230.252']
+    proxy_host = proxyDict['http']
+    proxy_ips = ['54.173.229.200', '54.175.230.252']
 
     # proxy_ips = ['54.160.232.145', '44.215.229.88']
-    # proxy_port = 1080
-    # proxy_type = socks.SOCKS5  # Change this based on your proxy type
+    proxy_port = 1080
+    proxy_type = socks.SOCKS5  # Change this based on your proxy type
     print('proxy type')
-    # selected_proxy_ip = proxy_ips[0]
+    selected_proxy_ip = proxy_ips[0]
     # Set up the connection parameters
     print('proxy type 2')
     conn_params = {
@@ -110,9 +110,9 @@ def connect():
 
     print('proxy type 3')
     # Set up the proxy
-    # socks.set_default_proxy(proxy_type, addr=proxy_host)
-    # socket.socket = socks.socksocket
-    # print('socket: ', socket.socket)
+    socks.set_default_proxy(proxy_type, addr=proxy_host)
+    socket.socket = socks.socksocket
+    print('socket: ', socket.socket)
     # Connect to the database via proxy
     try:
         print('conn params 11: ', conn_params)
