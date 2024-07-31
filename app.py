@@ -39,6 +39,7 @@ def get_public_ip():
         if response.status_code == 200:
             # Parse the JSON response and extract the IP address
             ip_address = response.json()['ip']
+            #Test comment
             return ip_address
         else:
             print(f"Error: Unable to fetch IP address. Status code: {response.status_code}")
